@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1088926927959",
+    "project_id": "weighttrackerapp-phongnguyen",
+    "storage_bucket": "weighttrackerapp-phongnguyen.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088926927959:android:5d1bb4ff0d27f11b7a2712",
+        "android_client_info": {
+          "package_name": "com.example.cs499_weighttracker_pn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXoJjHdunRcYq9kxsB1kCc1rnZhoA0wH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
