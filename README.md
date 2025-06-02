@@ -28,3 +28,16 @@ Migrated the original WeightTrackerMobileApp from Java to Kotlin, showcasing mod
 
 This enhancement highlights the transition from a legacy Java codebase to a clean, idiomatic Kotlin implementation, demonstrating proficiency in modern Android development and software design principles.
 
+<p align="center"> Legacy Layout  </p>
+
+![image](https://github.com/user-attachments/assets/02bd1a00-9465-482d-8922-c179cee27304)
+![image](https://github.com/user-attachments/assets/b2468651-f6d2-401a-b53f-7f846e772c95)
+
+<p align="center">Enhanced Layout</p>
+
+![image](https://github.com/user-attachments/assets/4e4b05c3-4e58-47b6-94ad-303e0f4f2efb)
+![image](https://github.com/user-attachments/assets/71d94600-b6bc-4948-a97e-fe328155640c)
+![image](https://github.com/user-attachments/assets/289f17ff-78f8-430e-8736-459d7665858d)
+
+
+
