@@ -7,6 +7,7 @@ plugins {
 android {
     namespace 'com.example.cs499_weighttracker_pn'
     compileSdk 35
+    buildToolsVersion "35.0.0"
 
     defaultConfig {
         applicationId "com.example.cs499_weighttracker_pn"
@@ -43,7 +44,7 @@ dependencies {
     androidTestImplementation libs.espresso.core
 
     // 1) Use the BoM to align all Firebase lib versions
-    implementation platform('com.google.firebase:firebase-bom:32.7.0')
+    implementation platform('com.google.firebase:firebase-bom:33.14.0')
 
     // 2) The KTX libraries you actually need
     implementation 'com.google.firebase:firebase-auth-ktx'
@@ -54,9 +55,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-appcheck-debug'
 
     // 4) **Crucial**: the interop layer FirestoreRegistrar needs
-    implementation 'com.google.firebase:firebase-appcheck-interop:17.0.1'
+    implementation 'com.google.firebase:firebase-appcheck-interop:17.1.0'
 
-
+    // Building the chart library
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation libs.kotlin.stdlib
 
     // For use of version catalog

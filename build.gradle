@@ -4,6 +4,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:<your-AGP-version>"
@@ -11,11 +12,15 @@ buildscript {
     }
 }
 
-// No pluginManagement{} here!
-// No allprojects { repositories { … } } here!
-
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.jvm)      apply false
     id("com.google.gms.google-services") version "4.4.2" apply false
+}
+
+allprojects {
+    repositories {
+   //     mavenCentral()
+       // maven { url 'https://jitpack.io' }
+    }
 }
