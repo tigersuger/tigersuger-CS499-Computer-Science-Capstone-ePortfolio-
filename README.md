@@ -1,4 +1,4 @@
-**Milestone 2 Enhancement – Software Design & Engineering**
+**Milestone 2 Enhancement – Software Design & Engineering -  Week 3**
 
 Migrated the original WeightTrackerMobileApp from Java to Kotlin, showcasing modern software engineering practices and end-to-end mobile development skills. Key points include:
 
