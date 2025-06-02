@@ -40,4 +40,5 @@
   Implemented all changes on a dedicated Git branch (`feature/trend-graph`), used descriptive commit messages (e.g., “Add TrendGraphActivity: sort daily weights + configure LineChart”), and merged back once testing on emulators confirmed correct behavior.
 
 By transforming raw database rows into an interactive chart, this enhancement highlights proficiency in Kotlin data structures, algorithmic problem solving, and third-party library use—culminating in a more intuitive user experience compared to the previous textual list of entries.
+
 ![image](https://github.com/user-attachments/assets/55a19962-9042-4a03-a5a2-20f910648802)
