@@ -104,6 +104,3 @@ You can follow the evolution of the app through these branches:
 **Phong Nguyen**
 [GitHub Profile](https://github.com/tigersuger)
 
----
-
-If you want, I can also suggest some additional ideas to make the README *even more attractive* — like adding screenshots of the app or badges for license & version — just tell me! 🚀
