@@ -11,13 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.*
+import android.util.Log
+// Removed redundant import statement
 
 class DataGridActivity : AppCompatActivity() {
 
-    // Database helper
-    private lateinit var databaseHelper: DatabaseHelper
-
-    // Interface elements
+    private lateinit var dbHelper: FirebaseDatabaseHelper
     private lateinit var goalWeightInput: EditText
     private lateinit var currentWeightInput: EditText
     private lateinit var currentGoalWeightText: TextView
@@ -28,98 +27,111 @@ class DataGridActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data_grid)
 
-        // Initialize the DatabaseHelper
-        databaseHelper = DatabaseHelper(this)
+        // Initialize Firebase helper
+        dbHelper = FirebaseDatabaseHelper()
 
-        // Initialize the interface elements
-        goalWeightInput = findViewById(R.id.goalWeightInput)
-        currentWeightInput = findViewById(R.id.currentWeightInput)
+        goalWeightInput       = findViewById(R.id.goalWeightInput)
+        currentWeightInput    = findViewById(R.id.currentWeightInput)
         currentGoalWeightText = findViewById(R.id.currentGoalWeightText)
-        todaysWeightText = findViewById(R.id.todaysWeightText)
-        recyclerView = findViewById(R.id.dataGridRecyclerView)
+        todaysWeightText      = findViewById(R.id.todaysWeightText)
+        recyclerView          = findViewById(R.id.dataGridRecyclerView)
 
-        // Set up RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Load daily weights to RecyclerView
+        // Initial load: goal & latest weight, then the log
+        dbHelper.getGoalWeight { gw ->
+            currentGoalWeightText.text = getString(
+                R.string.current_goal_weight_format, gw
+            )
+        }
+        dbHelper.getLatestWeight { lw ->
+            todaysWeightText.text = getString(
+                R.string.current_weight_value_format, lw
+            )
+        }
         loadDailyWeights()
 
-        currentGoalWeightText.text = getString(
-            R.string.current_goal_weight_format,
-            databaseHelper.goalWeight
-        )
-        todaysWeightText.text = getString(
-            R.string.current_weight_value_format,
-            databaseHelper.latestWeight
-        )
-
-        // Set new goal weight
-        val setGoalButton = findViewById<Button>(R.id.setGoalButton)
-        setGoalButton.setOnClickListener {
-            val goalWeightText = goalWeightInput.text.toString()
-            if (goalWeightText.isNotEmpty()) {
-                val goalWeight = goalWeightText.toDouble()
-                databaseHelper.insertGoalWeight(goalWeight)
+        // Set a new goal weight
+        findViewById<Button>(R.id.setGoalButton).setOnClickListener {
+            val text = goalWeightInput.text.toString()
+            if (text.isNotEmpty()) {
+                val gw = text.toDouble()
+                dbHelper.insertGoalWeight(gw)
                 currentGoalWeightText.text = getString(
-                    R.string.current_goal_weight_format,
-                    goalWeight
+                    R.string.current_goal_weight_format, gw
                 )
             }
         }
 
-        // Set new daily weight
-        val addDailyWeightButton = findViewById<Button>(R.id.addDailyWeightButton)
-        addDailyWeightButton.setOnClickListener {
-            val dailyWeightText = currentWeightInput.text.toString()
-            if (dailyWeightText.isNotEmpty()) {
-                val dailyWeight = dailyWeightText.toDouble()
-                val date = currentDate
-                databaseHelper.insertDailyWeight(date, dailyWeight)
-                todaysWeightText.text = getString(
-                    R.string.current_weight_value_format,
-                    dailyWeight
-                )
-                loadDailyWeights()
+        // Replace your existing addDailyWeightButton listener with this one
+        findViewById<Button>(R.id.addDailyWeightButton).setOnClickListener {
+            Log.d("DataGridActivity", "Add Daily Weight button clicked.")
+            val txt = currentWeightInput.text.toString()
 
-                // Check if user has reached goal weight
-                val goalWeight = databaseHelper.goalWeight
-                if (dailyWeight <= goalWeight) {
-                    Toast.makeText(
-                        this,
-                        "Congratulations! You've reached your goal weight!",
-                        Toast.LENGTH_LONG
-                    ).show()
+            if (txt.isNotEmpty()) {
+                try {
+                    // This block will catch errors if the input is not a valid number
+                    val wt = txt.toDouble()
+                    val date = currentDate
+                    Log.d("DataGridActivity", "Attempting to insert weight: $wt for date: $date")
+
+                    // write + reload in the success callback
+                    dbHelper.insertDailyWeight(date, wt) {
+                        Log.d("DataGridActivity", "Success callback executed. Reloading list.")
+                        // 1) update the “Today’s Weight” label
+                        todaysWeightText.text = getString(
+                            R.string.current_weight_value_format,
+                            wt
+                        )
+                        // 2) re‐load the entire log
+                        loadDailyWeights()
+                        // 3) check goal & toast if needed
+                        dbHelper.getGoalWeight { gw ->
+                            if (wt <= gw) {
+                                Toast.makeText(
+                                    this,
+                                    "Congratulations! You've reached your goal weight!",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        }
+                    }
+                } catch (e: NumberFormatException) {
+                    // Show an error message if the input was not a valid number
+                    Log.e("DataGridActivity", "Invalid number entered: $txt", e)
+                    Toast.makeText(this, "Please enter a valid weight.", Toast.LENGTH_SHORT).show()
                 }
+            } else {
+                // Show a message if the input box was empty
+                Toast.makeText(this, "Please enter today's weight.", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Navigate to SMS permission activity
-        val smsPermissionButton = findViewById<Button>(R.id.smsPermissionButton)
-        smsPermissionButton.setOnClickListener {
-            val intent = Intent(this, SMSPermissionActivity::class.java)
-            startActivity(intent)
-        }
 
-        // Trend Graph button
-        val trendGraphButton = findViewById<Button>(R.id.trendGraphButton)
-        trendGraphButton.setOnClickListener {
+        // SMS & Trend Graph buttons unchanged
+        findViewById<Button>(R.id.smsPermissionButton).setOnClickListener {
+            startActivity(Intent(this, SMSPermissionActivity::class.java))
+        }
+        findViewById<Button>(R.id.trendGraphButton).setOnClickListener {
             startActivity(Intent(this, TrendGraphActivity::class.java))
         }
     }
 
-    // Load daily weights and update RecyclerView
+    /** Reloads the RecyclerView from Firebase */
     private fun loadDailyWeights() {
-        val dailyWeights = databaseHelper.allDailyWeights
-        val dataGridAdapter = DataGridAdapter(dailyWeights, object : DataGridAdapter.OnDeleteClickListener {
-            override fun onDeleteClick(date: String, weight: Double) {
-                databaseHelper.deleteWeightEntry(date, weight)
-                loadDailyWeights()
-            }
-        })
-        recyclerView.adapter = dataGridAdapter
+        dbHelper.getAllDailyWeights { list ->
+            val adapter = DataGridAdapter(list,
+                object : DataGridAdapter.OnDeleteClickListener {
+                    override fun onDeleteClick(date: String, weight: Double) {
+                        dbHelper.deleteWeightEntry(date, weight)
+                        loadDailyWeights()
+                    }
+                })
+            recyclerView.adapter = adapter
+        }
     }
 
-    // Sets current date to format yyyy-MM-dd
+    /** Returns today’s date in yyyy-MM-dd format */
     private val currentDate: String
         get() {
             val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())

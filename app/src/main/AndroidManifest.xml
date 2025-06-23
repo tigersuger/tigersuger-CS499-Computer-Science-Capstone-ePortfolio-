@@ -6,7 +6,7 @@
 
     <!-- Telephony hardware is optional -->
     <uses-feature android:name="android.hardware.telephony" android:required="false" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/cs499_weighttracker_pn">
+
 
         <!-- Main Page of app -->
         <activity

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1088926927959",
+    "firebase_url": "https://weighttrackerapp-phongnguyen-default-rtdb.firebaseio.com",
     "project_id": "weighttrackerapp-phongnguyen",
     "storage_bucket": "weighttrackerapp-phongnguyen.firebasestorage.app"
   },

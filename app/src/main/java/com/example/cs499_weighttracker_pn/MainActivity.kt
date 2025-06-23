@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
 
 
 
@@ -21,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Explicit initialize (though usually automatic)
+        Firebase.initialize(this)
         setContentView(R.layout.activity_main)
 
         // Connect UI XML to Kotlin variables

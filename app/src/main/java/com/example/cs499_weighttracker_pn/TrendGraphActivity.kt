@@ -13,56 +13,55 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 
 class TrendGraphActivity : AppCompatActivity() {
+
+    // Use FirebaseDatabaseHelper, not the old DatabaseHelper
+    private lateinit var databaseHelper: FirebaseDatabaseHelper
+    private lateinit var lineChart: LineChart
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trend_graph)
 
-        // Initialize DatabaseHelper
-        val databaseHelper = DatabaseHelper(this)
+        // Initialize FirebaseDatabaseHelper
+        databaseHelper = FirebaseDatabaseHelper()
+        lineChart = findViewById(R.id.lineChart)
 
-        // Fetch daily weights
-        val dailyWeights = databaseHelper.allDailyWeights
-        Log.d("TrendGraph", "Number of daily weights: ${dailyWeights.size}")
-
-        // Check if data is empty
-        if (dailyWeights.isEmpty()) {
-            Toast.makeText(this, "No data available", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        // Sort weights by date
-        val sortedWeights = dailyWeights.sortedBy { it.date }
-
-        // Log the data for debugging
-        sortedWeights.forEach {
-            Log.d("TrendGraph", "Date: ${it.date}, Weight: ${it.weight}")
-            if (it.weight.isNaN() || it.weight.isInfinite()) {
-                Log.e("TrendGraph", "Invalid weight detected for date ${it.date}")
+        // Attach a real-time listener that updates the chart whenever data changes in Firebase
+        databaseHelper.addRealtimeWeightListener { dailyWeights ->
+            Log.d("TrendGraph", "Data updated. Number of daily weights: ${dailyWeights.size}")
+            if (dailyWeights.isNotEmpty()) {
+                // If data exists, call the function to draw the chart
+                updateChart(dailyWeights)
+            } else {
+                // If no data exists, clear the chart and show a message
+                lineChart.clear()
+                Toast.makeText(this, "No data available to build graph", Toast.LENGTH_SHORT).show()
             }
         }
+    }
 
-        // Create chart entries
+    // This new function contains the logic to draw or update the chart
+    private fun updateChart(dailyWeights: List<DataGridItem>) {
+        // Sort weights by date to ensure the line connects in chronological order
+        val sortedWeights = dailyWeights.sortedBy { it.date }
+
+        // Create chart entries from the sorted weight data
         val entries = sortedWeights.mapIndexed { index, item ->
             Entry(index.toFloat(), item.weight.toFloat())
         }
 
-        // Create LineDataSet with enhanced visibility
         val dataSet = LineDataSet(entries, "Daily Weights").apply {
-            setColor(Color.RED) // Use a bright, explicit color
-            setLineWidth(2f)
+            color = Color.RED
+            lineWidth = 2f
             setCircleColor(Color.RED)
-            setCircleRadius(5f) // Larger circles for visibility
+            circleRadius = 5f
             setDrawCircleHole(false)
         }
 
-        // Create LineData
         val lineData = LineData(dataSet)
-
-        // Initialize and configure the LineChart
-        val lineChart = findViewById<LineChart>(R.id.lineChart)
         lineChart.data = lineData
 
-        // Configure X-axis
+        // Configure the X-axis to display dates instead of numbers
         val xAxis = lineChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         val dates = sortedWeights.map { it.date }
@@ -74,16 +73,19 @@ class TrendGraphActivity : AppCompatActivity() {
         }
         xAxis.granularity = 1f
 
-        // Configure Y-axis
+        // Configure other chart properties
         lineChart.axisLeft.axisMinimum = 0f
         lineChart.axisRight.isEnabled = false
-
-        // Customize chart
         lineChart.description.isEnabled = false
         lineChart.legend.isEnabled = true
 
-        // Refresh the chart
-        lineChart.notifyDataSetChanged()
+        // Refresh the chart to display the new data
         lineChart.invalidate()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Important: Remove the listener when the activity is destroyed to prevent memory leaks
+        databaseHelper.removeRealtimeWeightListener()
     }
 }

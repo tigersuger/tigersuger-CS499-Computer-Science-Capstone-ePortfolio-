@@ -43,19 +43,14 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 
-    // 1) Use the BoM to align all Firebase lib versions
-    implementation platform('com.google.firebase:firebase-bom:33.14.0')
-
-    // 2) The KTX libraries you actually need
-    implementation 'com.google.firebase:firebase-auth-ktx'
-    implementation 'com.google.firebase:firebase-firestore-ktx'
-
-    // 3) (Optional) If you want App Check—Play Integrity or Debug:
-    implementation 'com.google.firebase:firebase-appcheck-playintegrity'
-    implementation 'com.google.firebase:firebase-appcheck-debug'
-
-    // 4) **Crucial**: the interop layer FirestoreRegistrar needs
-    implementation 'com.google.firebase:firebase-appcheck-interop:17.1.0'
+    // Enable the Firebase BoM
+    implementation platform("com.google.firebase:firebase-bom:33.1.1")
+    // Core Firebase SDK
+    implementation "com.google.firebase:firebase-analytics-ktx"
+    // Realtime Database (or Firestore)
+    implementation "com.google.firebase:firebase-database-ktx"
+    //  Authentication
+    implementation "com.google.firebase:firebase-auth-ktx"
 
     // Building the chart library
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
