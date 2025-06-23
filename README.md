@@ -1,106 +1,27 @@
 
+## 🧑‍💻 Professional Self-Assessment
 
-# CS 499 Capstone: Android Weight Tracker Mobile App with Firebase
+My name is **Phong Nguyen**, and this ePortfolio marks the culmination of my Bachelor of Science in Computer Science journey. It reflects not only the technical skills I have developed, but also my growth as a problem-solver, software engineer, and project leader. Transitioning from a project management background into hands-on software development, I have been driven by a passion for building modern, valuable solutions. This capstone project — centered on the comprehensive enhancement of the **Weight Tracker** Android application — is a demonstration of that passion in action.
 
-This repository serves as the ePortfolio for my Computer Science Capstone project. It showcases the complete lifecycle of the **Weight Tracker** mobile application — from its origins as a legacy Java project to a modern, cloud-enabled Android app built with Kotlin and Firebase Realtime Database.
+This project showcases an intentional progression of real-world engineering challenges, moving from a legacy Java application to a fully modernized, cloud-native Android app using Kotlin and Firebase. Each enhancement — modernizing the codebase, adding algorithmic data visualization, and architecting cloud-based real-time sync — reflects the practical application of industry-relevant skills.
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.9.0-7F52FF?style=for-the-badge\&logo=kotlin)](https://kotlinlang.org/)
-[![Firebase](https://img.shields.io/badge/Firebase-Realtime_Database-FFCA28?style=for-the-badge\&logo=firebase)](https://firebase.google.com/)
-[![Android Studio](https://img.shields.io/badge/Android_Studio-Hedgehog-3DDC84?style=for-the-badge\&logo=android-studio)](https://developer.android.com/studio)
-[![Gradle](https://img.shields.io/badge/Gradle-8.x-02303A?style=for-the-badge\&logo=gradle)](https://gradle.org/)
+### 🛠️ Software Engineering & Design
 
----
+Migrating the entire app from Java to Kotlin was not a simple translation — it was an opportunity to refactor the architecture for improved safety, readability, and maintainability. Leveraging Kotlin’s features (null-safety, data classes, scope functions), I aligned the app with modern Android standards — skills rooted in coursework such as **CS-250 (Software Development Lifecycle)** and essential for maintaining scalable, long-term solutions.
 
-## 🎥 Video Code Review & Walkthrough
+### 📊 Algorithms & Data Structures
 
-A comprehensive video walkthrough covering the app’s architecture, key enhancements, and functionality is available on YouTube:
-👉 [**Watch the full video presentation**](https://youtu.be/VpGz-RmhuNc)
+Transforming raw user data into actionable insights was a key goal. The implementation of the **Trend Graph** required algorithmic thinking — designing processes to retrieve, sort, and map weight entries into a format consumable by `MPAndroidChart`. This demonstrates applied knowledge from **CS-260 (Data Structures & Algorithms)** — using efficient data transformations to enhance the user experience.
 
----
+### 🗄️ Databases & Security
 
-## 📚 Table of Contents
+Shifting the app from a local SQLite database to **Firebase Realtime Database** required both technical proficiency and a security-first mindset. I architected a responsive, cloud-based data layer through the `FirebaseDatabaseHelper` class, while designing for future user-level authentication with Firebase Auth. These competencies reflect practical application of concepts from **DAD-220 (SQL)** and demonstrate readiness for real-world data architecture and secure app development.
 
-* [Project Overview](#project-overview)
-* [Core Features](#core-features)
-* [Key Technical Enhancements](#key-technical-enhancements)
+### 🤝 Collaboration & Communication
 
-  * [1. Codebase Modernization (Java to Kotlin)](#1-codebase-modernization-java-to-kotlin)
-  * [2. Data Visualization (Trend Graph)](#2-data-visualization-trend-graph)
-  * [3. Database Migration & Real-Time Sync (Firebase)](#3-database-migration--real-time-sync-firebase)
-* [Technology Stack](#technology-stack)
-* [Project Evolution & Source Code](#project-evolution--source-code)
-* [Author](#author)
+Even though this was an individual project, I followed collaborative best practices using **Git** with feature branches (`feature/trend-graph`, `feature/firebase-migration`), simulating real-world team workflows. I also communicated my technical design and enhancement process through a **code review video** and detailed project documentation — demonstrating strong written and verbal technical communication, a vital skill for both engineering and leadership roles.
 
----
+### 🚀 Career Readiness
 
-## 📱 Project Overview
-
-The **Weight Tracker** app provides a simple yet powerful tool for users to monitor their weight, set personal goals, and visualize their progress over time. The project began as a basic Java application and evolved into a robust, cloud-first mobile app — demonstrating full-cycle software engineering capabilities.
-
----
-
-## ✨ Core Features
-
-✅ **Daily Weight Logging:** Enter and save weight data to the cloud in real-time.
-✅ **Goal Weight Setting:** Set and update personal target goals.
-✅ **Real-Time Data Grid:** Live, scrollable list of all historical weight entries (most recent first).
-✅ **Interactive Trend Graph:** Dynamic chart to visualize weight trends and progress.
-✅ **Cloud-Persisted Data:** Secure storage via Firebase Realtime Database — access your data anytime, anywhere.
-
----
-
-## 🚀 Key Technical Enhancements
-
-### 1️⃣ Codebase Modernization (Java → Kotlin)
-
-* Migrated entire legacy codebase to idiomatic Kotlin.
-* Boosted code safety by leveraging Kotlin’s null-safety.
-* Improved readability using modern Kotlin features (data classes, type inference, scope functions).
-* Increased maintainability and aligned with modern Android best practices.
-
-### 2️⃣ Data Visualization (Trend Graph)
-
-* Integrated [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) library for rich, interactive visualizations.
-* Designed and implemented the “Trend Graph” screen to graph weight data.
-* Converted raw weight entries (`List<DataGridItem>`) into the chart’s `Entry` format.
-* Applied sorting and data transformation to ensure accuracy of the graph.
-
-### 3️⃣ Database Migration & Real-Time Sync (Firebase)
-
-* Replaced local SQLite database with **Firebase Realtime Database** for cloud-based persistence.
-* Implemented live, two-way data binding with Firebase listeners (`addValueEventListener`).
-* Made the app fully reactive — weight logs and charts update instantly on any data change.
-* Resolved Firebase SDK integration, Gradle conflicts, and ensured stable connections via explicit database URL configuration.
-* Added proper memory management: detached Firebase listeners on screen destroy to avoid memory leaks and improve app stability.
-
----
-
-## 🛠️ Technology Stack
-
-| Component          | Technology                                                                           |
-| ------------------ | ------------------------------------------------------------------------------------ |
-| Language           | [Kotlin](https://kotlinlang.org/)                                                    |
-| Framework          | [Android SDK](https://developer.android.com/studio)                                  |
-| Cloud Database     | [Firebase Realtime Database](https://firebase.google.com/products/realtime-database) |
-| Data Visualization | [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)                          |
-| Build System       | [Gradle](https://gradle.org/)                                                        |
-
----
-
-## 🌱 Project Evolution & Source Code
-
-You can follow the evolution of the app through these branches:
-
-* [**Original Artifact**](https://github.com/tigersuger/tigersuger-CS499-Computer-Science-Capstone-ePortfolio-/tree/Original_Artifact) — initial legacy Java application.
-* [**Week 3 - Enhancement One**](https://github.com/tigersuger/tigersuger-CS499-Computer-Science-Capstone-ePortfolio-/tree/Week3) — modernized Kotlin codebase.
-* [**Week 4 - Enhancement Two**](https://github.com/tigersuger/tigersuger-CS499-Computer-Science-Capstone-ePortfolio-/tree/week4) — addition of Trend Graph.
-* [**Week 5 - Enhancement Three**](https://github.com/tigersuger/tigersuger-CS499-Computer-Science-Capstone-ePortfolio-/tree/Week5) — full Firebase Realtime Database migration.
-* [**Final Enhanced Code Files**](https://github.com/tigersuger/tigersuger-CS499-Computer-Science-Capstone-ePortfolio-/tree/Enhanced-Code-Files) — completed, production-ready application.
-
----
-
-## 👨‍💻 Author
-
-**Phong Nguyen**
-[GitHub Profile](https://github.com/tigersuger)
+This project — modernizing legacy systems, implementing data-driven features, and building cloud-native mobile architecture — directly supports my career goal: to lead modern software projects that deliver tangible value. My blend of project management experience and newly acquired technical depth uniquely positions me to bridge the gap between leadership and engineering in today’s fast-evolving tech landscape.
 
