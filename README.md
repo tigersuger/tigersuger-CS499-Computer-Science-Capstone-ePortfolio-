@@ -1,8 +1,6 @@
-
-
 # CS 499 Capstone: Android Weight Tracker Mobile App with Firebase
 
-This repository serves as the ePortfolio for my Computer Science Capstone project. It showcases the complete lifecycle of the **Weight Tracker** mobile application — from its origins as a legacy Java project to a modern, cloud-enabled Android app built with Kotlin and Firebase Realtime Database.
+This repository serves as the ePortfolio for my Computer Science Capstone project. It showcases the complete lifecycle of the **Weight Tracker Mobile App** — from its origins as a legacy Java project to a modern, cloud-enabled Android app built with Kotlin and Firebase Realtime Database.
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.9.0-7F52FF?style=for-the-badge\&logo=kotlin)](https://kotlinlang.org/)
 [![Firebase](https://img.shields.io/badge/Firebase-Realtime_Database-FFCA28?style=for-the-badge\&logo=firebase)](https://firebase.google.com/)
@@ -18,6 +16,13 @@ A comprehensive video walkthrough covering the app’s architecture, key enhance
 
 ---
 
+## 🧑‍💻 Professional Self-Assessment
+
+This self-assessment summarizes my personal and professional growth throughout the Bachelor of Science in Computer Science program. It highlights the technical skills, engineering practices, and problem-solving abilities I developed while completing this capstone project — demonstrating my readiness to contribute to modern software development teams and lead future projects.
+👉 [**View full Professional Self-Assessment**](https://github.com/tigersuger/tigersuger-CS499-Computer-Science-Capstone-ePortfolio-/tree/Professional-Self-Assessment)
+
+---
+
 ## 📚 Table of Contents
 
 * [Project Overview](#project-overview)
@@ -29,13 +34,13 @@ A comprehensive video walkthrough covering the app’s architecture, key enhance
   * [3. Database Migration & Real-Time Sync (Firebase)](#3-database-migration--real-time-sync-firebase)
 * [Technology Stack](#technology-stack)
 * [Project Evolution & Source Code](#project-evolution--source-code)
-* [Author](#author)
+* [Author & Contact](#author--contact)
 
 ---
 
 ## 📱 Project Overview
 
-The **Weight Tracker** app provides a simple yet powerful tool for users to monitor their weight, set personal goals, and visualize their progress over time. The project began as a basic Java application and evolved into a robust, cloud-first mobile app — demonstrating full-cycle software engineering capabilities.
+The **Weight Tracker Mobile App** provides a simple yet powerful tool for users to monitor their weight, set personal goals, and visualize their progress over time. The project began as a basic Java application and evolved into a robust, cloud-first mobile app — demonstrating full-cycle software engineering capabilities.
 
 ---
 
@@ -99,8 +104,13 @@ You can follow the evolution of the app through these branches:
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Author & Contact
 
 **Phong Nguyen**
 [GitHub Profile](https://github.com/tigersuger)
+
+Thank you for taking the time to explore my capstone project! If you’d like to connect, collaborate, or discuss opportunities, feel free to reach out:
+
+* 📧 Email: *[phongnguyen.jobs@gmail.com](mailto:phongnguyen.jobs@gmail.com)*
+* 💼 [LinkedIn Profile](https://www.linkedin.com/in/phongnguyen86/)
 
