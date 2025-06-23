@@ -47,6 +47,3 @@ The project involved a full modernization of a legacy Java-based app, transformi
 
   * Cleaned up listeners in `onDestroy()` to prevent memory leaks and ensure app stability.
 
----
-
-If you'd like, I can also help you format it in proper Markdown with headings, code blocks, and links for an even more polished GitHub README!
