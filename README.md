@@ -42,3 +42,9 @@
 By transforming raw database rows into an interactive chart, this enhancement highlights proficiency in Kotlin data structures, algorithmic problem solving, and third-party library use—culminating in a more intuitive user experience compared to the previous textual list of entries.
 
 ![image](https://github.com/user-attachments/assets/55a19962-9042-4a03-a5a2-20f910648802)
+![image](https://github.com/user-attachments/assets/258383e5-db08-4f02-a17f-f0493f511aca)
+
+![image](https://github.com/user-attachments/assets/ef4c6b22-3442-4ead-845b-1883ed28beec)
+![image](https://github.com/user-attachments/assets/939b5717-4a66-4c6f-bdd7-8a9ab845c8df)
+
+
