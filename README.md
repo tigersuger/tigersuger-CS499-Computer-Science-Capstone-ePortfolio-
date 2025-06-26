@@ -1,7 +1,7 @@
 
 ## 🧑‍💻 Professional Self-Assessment
 
-My name is **Phong Nguyen**, and this ePortfolio marks the culmination of my Bachelor of Science in Computer Science journey. It reflects not only the technical skills I have developed, but also my growth as a problem-solver, software engineer, and project leader. Transitioning from a project management background into hands-on software development, I have been driven by a passion for building modern, valuable solutions. This capstone project — centered on the comprehensive enhancement of the **Weight Tracker** Android application — is a demonstration of that passion in action.
+My name is **Phong Nguyen**, and this ePortfolio marks the culmination of my Bachelor of Science in Computer Science journey. It reflects not only the technical skills I have developed, but also my growth as a problem-solver, software engineer, and project leader. Transitioning from a project management background into hands-on software development, I have been driven by a passion for building modern, valuable solutions. This capstone project — centered on the comprehensive enhancement of the **Weight Tracker Android application**  — is a demonstration of that passion in action.
 
 This project showcases an intentional progression of real-world engineering challenges, moving from a legacy Java application to a fully modernized, cloud-native Android app using Kotlin and Firebase. Each enhancement — modernizing the codebase, adding algorithmic data visualization, and architecting cloud-based real-time sync — reflects the practical application of industry-relevant skills.
 
@@ -19,7 +19,7 @@ Shifting the app from a local SQLite database to **Firebase Realtime Database** 
 
 ### 🤝 Collaboration & Communication
 
-Even though this was an individual project, I followed collaborative best practices using **Git** with feature branches (`feature/trend-graph`, `feature/firebase-migration`), simulating real-world team workflows. I also communicated my technical design and enhancement process through a **code review video** and detailed project documentation — demonstrating strong written and verbal technical communication, a vital skill for both engineering and leadership roles.
+Even though this was an individual project, I followed collaborative best practices using **Git** with feature branches (`feature/trend-graph`, `feature/firebase-migration`), simulating real-world team workflows. I also communicated my technical design and enhancement process through a **code review video** https://www.youtube.com/watch?v=VpGz-RmhuNc&ab_channel=windy86vnand detailed project documentation — demonstrating strong written and verbal technical communication, a vital skill for both engineering and leadership roles.
 
 ### 🚀 Career Readiness
 
