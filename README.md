@@ -19,7 +19,7 @@ Shifting the app from a local SQLite database to **Firebase Realtime Database** 
 
 ### 🤝 Collaboration & Communication
 
-Even though this was an individual project, I followed collaborative best practices using **Git** with feature branches (`feature/trend-graph`, `feature/firebase-migration`), simulating real-world team workflows. I also communicated my technical design and enhancement process through a **code review video** https://www.youtube.com/watch?v=VpGz-RmhuNc&ab_channel=windy86vnand detailed project documentation — demonstrating strong written and verbal technical communication, a vital skill for both engineering and leadership roles.
+Even though this was an individual project, I followed collaborative best practices using **Git** with feature branches (`feature/trend-graph`, `feature/firebase-migration`), simulating real-world team workflows. I also communicated my technical design and enhancement process through a [**code review video here**](https://youtu.be/VpGz-RmhuNc) detailed project documentation — demonstrating strong written and verbal technical communication, a vital skill for both engineering and leadership roles.
 
 ### 🚀 Career Readiness
 
